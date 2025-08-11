@@ -1,6 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-import 'dart:typed_data';
+// import 'dart:convert';
+// import 'dart:io';
+// import 'dart:typed_data';
 // import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // import 'package:image_cropper/image_cropper.dart';
@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 // import 'package:zoom_widget/zoom_widget.dart';
 // import 'package:image/image.dart' as img;
 
-class ProfileView extends StatefulWidget {
-  const ProfileView({super.key});
+class ProfileUI extends StatefulWidget {
+  const ProfileUI({super.key});
 
   @override
-  State<ProfileView> createState() => _ProfileViewState();
+  State<ProfileUI> createState() => _ProfileUIState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
+class _ProfileUIState extends State<ProfileUI> {
   // final ValueNotifier<String> _profileImagePath = ValueNotifier<String>("");
 
   // final ImagePicker imgpicker = ImagePicker();
@@ -91,9 +91,38 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text('Profile UI'),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+              width: MediaQuery.of(context).size.width * 0.3,
+              height: MediaQuery.of(context).size.height * 0.13,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.person, size: 50)),
+          Positioned(
+              bottom: -5,
+              right: -5,
+              child: Container(
+                width: 40,
+                height: 40,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).primaryColor,
+                ),
+                child: Icon(
+                  Icons.image_outlined,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+              )),
+        ],
+      ),
     );
     // return Stack(
     //   clipBehavior: Clip.none,
